@@ -24,18 +24,18 @@ return
 				vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
 				vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 				-- toggle highlights
-				local diagnostics_active = true
-				local toggleDiagnostics = function()
-					diagnostics_active = not diagnostics_active
-					if diagnostics_active then
-						vim.diagnostic.show()
-					else
-						vim.diagnostic.hide()
-					end
-				end
-
-				vim.keymap.set("i", "<C-h>", toggleDiagnostics, opts)
-				vim.keymap.set("n", "<C-h>", toggleDiagnostics, opts)
+				-- local diagnostics_active = true
+				-- local toggleDiagnostics = function()
+				-- 	diagnostics_active = not diagnostics_active
+				-- 	if diagnostics_active then
+				-- 		vim.diagnostic.show()
+				-- 	else
+				-- 		vim.diagnostic.hide()
+				-- 	end
+				-- end
+				--
+				-- vim.keymap.set("i", "<C-h>", toggleDiagnostics, opts)
+				-- vim.keymap.set("n", "<C-h>", toggleDiagnostics, opts)
 			end)
 
 
