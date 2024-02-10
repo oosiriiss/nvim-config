@@ -1,4 +1,14 @@
----@diagnostic disable: undefined-global
+local function try(f,catch_f)
+	local status, exception = pcall(f)
+	if not status then
+		if catch_f then
+			catch_f(exception)
+		end
+	end
+end
+
+
+
 return
 {
 	{
@@ -10,7 +20,8 @@ return
 			local lsp = require("lsp-zero")
 
 
-			lsp.on_attach(
+		lsp.on_attach(
+			
 			function(client,bufnr)
 				local opts = {buffer=bufnr,remap = false}
 				vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
@@ -26,13 +37,26 @@ return
 				local toggleDiagnostics = function()
 					diagnostics_active = not diagnostics_active
 					if diagnostics_active then
-						vim.diagnostic.show()
+
+						-- try to show diagnostics
+
+						try(function()
+							vim.diagnostic.show()
+						end)
 					else
-						vim.diagnostic.hide()
-					end
+
+						try(function()
+							vim.diagnostic.hide()
+						end)
+ 					end
 				end
 
-				vim.keymap.set("n", "<C-h>", toggleDiagnostics, opts)
+				vim.keymap.set({"n","i"},"<leader>td", toggleDiagnostics, opts)
+			
+				vim.diagnostic.config({
+					update_in_insert = true,
+				})
+
 			end)
 
 
@@ -43,7 +67,6 @@ return
 					lsp.default_setup,
 				}
 			})
-
 
 		end
 	},
