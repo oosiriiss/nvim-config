@@ -30,16 +30,14 @@ return
 				vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
 				vim.keymap.set("n", "<leader>ref", function() vim.lsp.buf.references() end, opts)
 				vim.keymap.set("n", "<leader>rnm", function() vim.lsp.buf.rename() end, opts)
-				vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+				--vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
 				-- toggle highlights
 				local diagnostics_active = true
 				local toggleDiagnostics = function()
 					diagnostics_active = not diagnostics_active
 					if diagnostics_active then
-
-						-- try to show diagnostics
-
+						-- try to show diagnostic
 						try(function()
 							vim.diagnostic.show()
 						end)
@@ -51,8 +49,7 @@ return
  					end
 				end
 
-				vim.keymap.set({"n","i"},"<leader>td", toggleDiagnostics, opts)
-			
+				vim.keymap.set({"n","i"},"<F1>", toggleDiagnostics, opts)		
 				vim.diagnostic.config({
 					update_in_insert = true,
 				})
