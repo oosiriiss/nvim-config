@@ -8,8 +8,9 @@ vim.keymap.set("n","<C-d>","<C-d>zz")
 vim.keymap.set("n","<C-u>","<C-u>zz")
 
 -- searching with centered viewport
-vim.keymmap.set("n","nzzzv")
-vim.keymmap.set("n","Nzzzv")
+vim.keymap.set("n","n","nzzzv")
+
+vim.keymap.set("n","N","Nzzzv")
 
 vim.keymap.set("v","<C-v>","<C-v>",{noremap = false})
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
