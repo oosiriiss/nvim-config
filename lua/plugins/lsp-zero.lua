@@ -7,8 +7,6 @@ local function try(f,catch_f)
 	end
 end
 
-
-
 return
 {
 	{
