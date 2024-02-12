@@ -3,11 +3,6 @@
 
 -- general
 
-some words random 
-some word random 
-some word test 
-lolo is  this test word
-
 
 -- vertical movement is centered
 vim.keymap.set("n","<C-d>","<C-d>zz")
