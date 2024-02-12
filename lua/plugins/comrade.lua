@@ -1,3 +1,3 @@
 return {
-	"beeender/Comrade"
+	"beeender/ComradeNeovim",
 }
