@@ -1,0 +1,29 @@
+
+let mapleader = " "
+
+set scrolloff=5
+
+set relativenumber
+
+set incsearch
+
+nmap  <leader>ca <Action>(ShowIntentionActions)
+nmap <leader>wss <Action>(GotoSymbol)
+nmap <leader>gd <Action>(GotoDefinition)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap K <Action>(ShowHoverInfo)
+nmap <leader>ref <Action>(ShowUsages)
+nmap <leader>rnm <Action>(RenameElement)
+
+nmap <A-l> <Action>(ReformatCode)
+imap <A-l> <Action>(ReformatCode)
+
+nmap <leader>pf <Action>(GotoFile)
+map <leader>ps <Action>(FindInPath)
+
+" harpoon
+nmap <C-e> <Action>(ShowHarpoon)
+
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+
