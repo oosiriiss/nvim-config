@@ -1,4 +1,8 @@
 
+
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+
 let mapleader = " "
 
 set scrolloff=5
@@ -6,6 +10,16 @@ set scrolloff=5
 set relativenumber
 
 set incsearch
+
+
+"general"
+
+nmap <leader>pf <Action>(GotoFile)
+map <leader>ps <Action>(FindInPath)
+nmap <C-d> <C-d>zz
+nmap <C-u> <C-u>zz
+
+" lsp mappings "
 
 nmap  <leader>ca <Action>(ShowIntentionActions)
 nmap <leader>wss <Action>(GotoSymbol)
@@ -18,12 +32,13 @@ nmap <leader>rnm <Action>(RenameElement)
 nmap <A-l> <Action>(ReformatCode)
 imap <A-l> <Action>(ReformatCode)
 
-nmap <leader>pf <Action>(GotoFile)
-map <leader>ps <Action>(FindInPath)
-
-" harpoon
+" harpoon < -- requires HarpoonIj plugin to be installed
 nmap <C-e> <Action>(ShowHarpoon)
+nmap <C-a> <Action>(AddToHarpoon)
 
-Plug 'machakann/vim-highlightedyank'
-Plug 'tpope/vim-commentary'
+" nerd-tree
+Plug 'preservim/nerdtree'
+
+nmap <leader>pv :NERDTree<CR>
+
 
