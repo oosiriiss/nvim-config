@@ -1,5 +1,7 @@
 -- general
 
+-- content of run-app.bat should look somewhat like this
+-- gradlew assemble && adb -e install -r app/build/outputs/apk/debug/app-debug.apk && adb -e shell am start -n com.bscode.todoapp/com.bscode.todoapp.MainActivity
 
 vim.keymap.set("n", "<F5>",
 	function()
