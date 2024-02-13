@@ -13,9 +13,7 @@ vim.keymap.set("n", "<F5>",
 )
 vim.keymap.set("n", "<F6>",
 	function()
-	
-	vim.cmd("silent !emulator -avd Pixel_XL_API_33")
-
+	vim.fn.system("start pwsh.exe -NoExit -Command \"emulator -avd Pixel_XL_API_33\"")
 	end
 )
 -- vertical movement is centered
