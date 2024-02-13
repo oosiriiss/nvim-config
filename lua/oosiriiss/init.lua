@@ -1,4 +1,3 @@
-
 require("oosiriiss.lazy")
 require("oosiriiss.remap")
 require("oosiriiss.colors")
