@@ -26,6 +26,14 @@ nmap <A-Right> <Action>(NextTab)
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+
+PopupMenu-selectNext                               <Down>
+PopupMenu-selectParent                             <Left>
+PopupMenu-selectPrevious
+" code actions up -down"
+nmap <C-j> <Action>(PopupMenu-selectNext)
+nmap <C-k> <Action>(PopupMenu-selectPrevious)
+
 " telescope "
 
 nmap <leader>pf <Action>(GotoFile)
@@ -49,7 +57,7 @@ imap <A-l> <Action>(ReformatCode)
 " harpoon < -- requires HarpoonIj plugin to be installed
 nmap <C-e> <Action>(ShowHarpoon)
 nmap <C-a> <Action>(AddToHarpoon)
-
+namap <CR> <Action>(SelectHarpoonItem)
 " nerd-tree
 Plug 'preservim/nerdtree'
 
