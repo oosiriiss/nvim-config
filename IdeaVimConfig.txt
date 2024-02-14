@@ -14,10 +14,19 @@ set incsearch
 
 "general"
 
-nmap <leader>pf <Action>(GotoFile)
-map <leader>ps <Action>(FindInPath)
 nmap <C-d> <C-d>zz
 nmap <C-u> <C-u>zz
+
+" searching with centered viewport
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+" telescope "
+
+nmap <leader>pf <Action>(GotoFile)
+map <leader>ps <Action>(FindInPath)
+
+
 
 " lsp mappings "
 
@@ -39,6 +48,10 @@ nmap <C-a> <Action>(AddToHarpoon)
 " nerd-tree
 Plug 'preservim/nerdtree'
 
-nmap <leader>pv :NERDTree<CR>
+" "
+nmap <leader>pv :NERDTreeFind<CR>
 
+nmap <A-n> <Action>(NewFile)
+nmap <A-d> <Action>(NewDir)
 
+command! ZenMode action ToggleZenMode
