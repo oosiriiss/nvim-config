@@ -17,6 +17,11 @@ set incsearch
 nmap <C-d> <C-d>zz
 nmap <C-u> <C-u>zz
 
+" switching tabs"
+
+nmap <A-Left> <Action>(PreviousTab)
+nmap <A-Right> <Action>(NextTab)
+
 " searching with centered viewport
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
