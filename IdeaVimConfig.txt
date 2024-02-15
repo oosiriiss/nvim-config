@@ -51,6 +51,9 @@ nmap K <Action>(ShowHoverInfo)
 nmap <leader>ref <Action>(ShowUsages)
 nmap <leader>rnm <Action>(RenameElement)
 
+imap <C-h> <Action>(QuickJavaDoc)
+nmap <C-h><Action>(QuickJavaDoc)
+
 nmap <A-l> <Action>(ReformatCode)
 imap <A-l> <Action>(ReformatCode)
 
