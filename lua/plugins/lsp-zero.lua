@@ -18,6 +18,7 @@ return
 
 			lsp.on_attach(
 
+
 				function(client, bufnr)
 					local opts = { buffer = bufnr, remap = false }
 					-- got o definiton remap
@@ -73,7 +74,9 @@ return
 	},
 	{ 'neovim/nvim-lspconfig' },
 	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'L3MON4D3/LuaSnip' },
+	{ 'L3MON4D3/LuaSnip' ,
+version = "v2.2.0"},
+	{"saadparwaiz1/cmp_luasnip",},
 	{ 'hrsh7th/cmp-buffer' },
 	{
 		'hrsh7th/nvim-cmp',

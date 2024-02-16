@@ -26,20 +26,24 @@ nmap <A-Right> <Action>(NextTab)
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-
-PopupMenu-selectNext                               <Down>
-PopupMenu-selectParent                             <Left>
-PopupMenu-selectPrevious
 " code actions up -down"
-nmap <C-n> <Action>(PopupMenu-selectNext)
-nmap <C-p> <Action>(PopupMenu-selectPrevious)
-
+nmap <C-n> <Action>(EditorDown)
+nmap <C-p> <Action>(EditorUp)
 " telescope "
 
 nmap <leader>pf <Action>(GotoFile)
 map <leader>ps <Action>(FindInPath)
 
+" copying keymaps "
 
+xmap <leader>p [["_dp"]]
+
+nmap <leader>y [["+y"]]
+vmap <leader>y [["+y"]]
+nmap <leader>y [["+Y"]]
+
+nmap <leader>d [["_d"]]
+vmap <leader>d [["_y"]]
 
 " lsp mappings "
 
@@ -70,4 +74,4 @@ nmap <leader>pv :NERDTreeFind<CR>
 nmap <A-n> <Action>(NewFile)
 nmap <A-d> <Action>(NewDir)
 
-c
+command! ZenMode action ToggleZenMode
