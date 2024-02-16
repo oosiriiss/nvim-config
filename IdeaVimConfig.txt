@@ -31,8 +31,8 @@ PopupMenu-selectNext                               <Down>
 PopupMenu-selectParent                             <Left>
 PopupMenu-selectPrevious
 " code actions up -down"
-nmap <C-j> <Action>(PopupMenu-selectNext)
-nmap <C-k> <Action>(PopupMenu-selectPrevious)
+nmap <C-n> <Action>(PopupMenu-selectNext)
+nmap <C-p> <Action>(PopupMenu-selectPrevious)
 
 " telescope "
 
@@ -70,4 +70,4 @@ nmap <leader>pv :NERDTreeFind<CR>
 nmap <A-n> <Action>(NewFile)
 nmap <A-d> <Action>(NewDir)
 
-command! ZenMode action ToggleZenMode
+c
