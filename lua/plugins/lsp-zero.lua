@@ -22,16 +22,15 @@ return
 				function(client, bufnr)
 					local opts = { buffer = bufnr, remap = false }
 					-- got o definiton remap
-
 					vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 					vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
 					vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 
-					vim.keymap.set("n","<leader>wss", function () vim.lsp.buf.workspace_symbol() end,opts)
+					vim.keymap.set("n", "<leader>wss", function() vim.lsp.buf.workspace_symbol() end, opts)
 
 					vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-					vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-					vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+					vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
+					vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
 
 					vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
 					vim.keymap.set("n", "<leader>ref", function() vim.lsp.buf.references() end, opts)
@@ -74,9 +73,11 @@ return
 	},
 	{ 'neovim/nvim-lspconfig' },
 	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'L3MON4D3/LuaSnip' ,
-version = "v2.2.0"},
-	{"saadparwaiz1/cmp_luasnip",},
+	{
+		'L3MON4D3/LuaSnip',
+		version = "v2.2.0"
+	},
+	{ "saadparwaiz1/cmp_luasnip", },
 	{ 'hrsh7th/cmp-buffer' },
 	{
 		'hrsh7th/nvim-cmp',
@@ -101,6 +102,7 @@ version = "v2.2.0"},
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "buffer" }
+
 				})
 			})
 		end

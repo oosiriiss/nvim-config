@@ -2,18 +2,15 @@ return {
 	'nvim-treesitter/nvim-treesitter',
 	name = "treesitter",
 	build = ":TSUpdate",
-	
+
 	init = function(plugin)
-	
 		require("lazy.core.loader").add_to_rtp(plugin)
 		require("nvim-treesitter.query_predicates")
 	end,
 	config = function()
-
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = { "c", "lua", "vim", "vimdoc", "query","rust","cpp","kotlin","javascript","typescript","rust","cpp","html", },
+			ensure_installed = { "vimdoc", "javascript", "typescript", "c", "lua", "rust" },
 
-			auto_install = true,
 
 			auto_install = true,
 
