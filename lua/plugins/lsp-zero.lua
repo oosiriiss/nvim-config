@@ -34,7 +34,7 @@ return
 
 					vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
 					vim.keymap.set("n", "<leader>ref", function() vim.lsp.buf.references() end, opts)
-					vim.keymap.set("n", "<leader>rnm", function() vim.lsp.buf.rename() end, opts)
+					vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
 					vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
 					vim.keymap.set({ "i", "n" }, "<A-l>", function() vim.lsp.buf.format() end, opts)
