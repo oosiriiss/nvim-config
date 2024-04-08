@@ -1,2 +1,3 @@
-require("oosiriiss")
+require('oosiriiss');
+
 
