@@ -6,8 +6,11 @@ return {
 	-- nvim-cmp source for filesystem paths
 	{ 'hrsh7th/cmp-path', },
 	-- nvim-cmp source for vim{'s cmdline.},
-	{ 'hrsh7th/cmp-cmdline',      name = 'luasnip' },
-	{ 'L3MON4D3/LuaSnip', },
+	{ 'hrsh7th/cmp-cmdline'},
+	{ 'L3MON4D3/LuaSnip', name="luasnip",
+	 tag ="v2.3.0",
+      run = "make install_jsregexp"
+},
 	-- luasnip completion source for nvim-cmp
 	{ 'saadparwaiz1/cmp_luasnip', },
 	-- Set up nvim-cmp.
