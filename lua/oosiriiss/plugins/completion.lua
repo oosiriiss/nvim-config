@@ -93,6 +93,7 @@ return {
 			lspconfig.bashls.setup {
 				capabilities = capabilities
 			}
+			lspconfig.jdtls.setup{}
 		end
 
 
