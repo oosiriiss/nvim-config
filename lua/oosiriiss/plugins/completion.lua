@@ -1,16 +1,18 @@
 return {
 
-	{ 'hrsh7th/cmp-nvim-lsp',     name = "cmp_nvim_lsp" },
+	{ 'hrsh7th/cmp-nvim-lsp', name = "cmp_nvim_lsp" },
 	-- nvim-cmp source for buffer words.
 	{ 'hrsh7th/cmp-buffer', },
 	-- nvim-cmp source for filesystem paths
 	{ 'hrsh7th/cmp-path', },
 	-- nvim-cmp source for vim{'s cmdline.},
-	{ 'hrsh7th/cmp-cmdline'},
-	{ 'L3MON4D3/LuaSnip', name="luasnip",
-	 tag ="v2.3.0",
-      run = "make install_jsregexp"
-},
+	{ 'hrsh7th/cmp-cmdline' },
+	{
+		'L3MON4D3/LuaSnip',
+		name = "luasnip",
+		tag = "v2.3.0",
+		run = "make install_jsregexp"
+	},
 	-- luasnip completion source for nvim-cmp
 	{ 'saadparwaiz1/cmp_luasnip', },
 	-- Set up nvim-cmp.
@@ -80,6 +82,20 @@ return {
 			lspconfig.pyright.setup {
 				capabilities = capabilities
 			}
+			-- formatting with black on save
+			vim.api.nvim_create_autocmd(
+				"BufWritePost",
+				{
+					pattern = "*.py",
+					callback = function()
+						vim.cmd("silent !black --quiet %")
+						-- vim.cmd("write!")
+					end,
+				}
+			)
+
+
+
 			lspconfig.rust_analyzer.setup {
 				capabilities = capabilities
 			}
@@ -93,7 +109,7 @@ return {
 			lspconfig.bashls.setup {
 				capabilities = capabilities
 			}
-			lspconfig.jdtls.setup{}
+			lspconfig.jdtls.setup {}
 		end
 
 
