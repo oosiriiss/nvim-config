@@ -94,8 +94,6 @@ return {
 				}
 			)
 
-
-
 			lspconfig.rust_analyzer.setup {
 				capabilities = capabilities
 			}
@@ -103,8 +101,10 @@ return {
 			lspconfig.lua_ls.setup {
 				capabilities = capabilities
 			}
+			-- Formatting options specified in .clang-format in repo root
+			-- copy it in desired projects
 			lspconfig.clangd.setup {
-				capabilities = capabilities
+				capabilities = capabilities,
 			}
 			lspconfig.bashls.setup {
 				capabilities = capabilities
