@@ -106,6 +106,7 @@ return {
 			lspconfig.bashls.setup {
 			}
 			lspconfig.cmake.setup {}
+			lspconfig.glslls.setup{}
 			
 		end
 
