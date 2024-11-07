@@ -106,13 +106,15 @@ return {
 			lspconfig.bashls.setup {
 			}
 			lspconfig.cmake.setup {}
+
 			lspconfig.glslls.setup{}
-			
+
+			lspconfig.als.setup{}
+
+			lspconfig.asm_lsp.setup{}
+
+			lspconfig.gopls.setup{}
 		end
-
-
-
-
 	},
 
 }
