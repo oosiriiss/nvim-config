@@ -107,13 +107,28 @@ return {
 			}
 			lspconfig.cmake.setup {}
 
-			lspconfig.glslls.setup{}
+			lspconfig.glslls.setup {}
 
-			lspconfig.als.setup{}
+			lspconfig.als.setup {}
 
-			lspconfig.asm_lsp.setup{}
+			lspconfig.asm_lsp.setup {}
 
-			lspconfig.gopls.setup{}
+			lspconfig.gopls.setup {}
+
+			capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+			lspconfig.html.setup {
+				capabilities = capabilities,
+			}
+			lspconfig.cssls.setup {
+				capabilities = capabilities,
+			}
+			lspconfig.glslls.setup {}
+			
+			lspconfig.sqls.setup {}
+			
+			lspconfig.hls.setup {}
 		end
 	},
 
