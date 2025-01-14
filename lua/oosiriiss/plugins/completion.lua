@@ -111,8 +111,6 @@ return {
 
 			lspconfig.als.setup {}
 
-			lspconfig.asm_lsp.setup {}
-
 			lspconfig.gopls.setup {}
 
 			capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -125,11 +123,20 @@ return {
 				capabilities = capabilities,
 			}
 			lspconfig.glslls.setup {}
-			
+
 			lspconfig.sqls.setup {}
-			
+
 			lspconfig.hls.setup {}
+
+			--
+			-- On arch linux the executable had to be manually added to path
+			-- package was qt6-declarative
+			-- It was in /usr/lib/qt6/bin
+			lspconfig.qmlls.setup {
+				filetypes = { "qml" }
+			}
+
+			lspconfig.zls.setup {}
 		end
 	},
-
 }
