@@ -137,6 +137,8 @@ return {
 			}
 
 			lspconfig.zls.setup {}
+
+			lspconfig.prolog_ls.setup{}
 		end
 	},
 }
