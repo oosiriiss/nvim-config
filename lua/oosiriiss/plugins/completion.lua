@@ -109,8 +109,6 @@ return {
 
 			lspconfig.glslls.setup {}
 
-			lspconfig.als.setup {}
-
 			lspconfig.gopls.setup {}
 
 			capabilities = vim.lsp.protocol.make_client_capabilities()
