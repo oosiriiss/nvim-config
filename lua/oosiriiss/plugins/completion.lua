@@ -137,11 +137,6 @@ return {
 			}
 
 			lspconfig.zls.setup {}
-<<<<<<< HEAD
-			
-=======
-
->>>>>>> refs/remotes/origin/main
 			lspconfig.prolog_ls.setup{}
 		end
 	},
