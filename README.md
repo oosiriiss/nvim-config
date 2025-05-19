@@ -1,11 +1,11 @@
+# Neovim config 
 
-If using windows remember to disalbe "CTRL-V" paste default bind from the terminal
+My basic neovim config.
+
+## Setup
+
+Copy all the files to the neovim config directory (```~/.config/nvim``` on Linux or ```~/AppData/Local/nvim on Windows```)
 
 
-
-
-##################
-
-When using comrade remember to siwtch NVIM_LISTEN_ADDRESS to NVI in plugins python.init
 
 
