@@ -1,52 +1,48 @@
-function setup_all() 
+function setup_all()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      local lspconfig = require('lspconfig')
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
+	lspconfig.pyright.setup {
+		capabilities = capabilities
+	}
 
-lspconfig.pyright.setup {
-   capabilities = capabilities
-}
--- formatting with black on save
-vim.api.nvim_create_autocmd(
-   "BufWritePost",
-   {
-      pattern = "*.py",
-      callback = function()
-	 vim.cmd("silent !black --quiet %")
-      end,
-   }
-)
+	-- formatting with black on save
+	vim.api.nvim_create_autocmd(
+		"BufWritePost",
+		{
+			pattern = "*.py",
+			callback = function()
+				vim.cmd("silent !black --quiet %")
+			end,
+		}
+	)
 
-lspconfig.rust_analyzer.setup {}
-lspconfig.lua_ls.setup {}
--- Formatting options specified in .clang-format in repo root
--- copy it in desired projects
-lspconfig.clangd.setup {}
-lspconfig.bashls.setup {}
-lspconfig.cmake.setup {}
-lspconfig.glslls.setup {}
-lspconfig.gopls.setup {}
+	lspconfig.rust_analyzer.setup { capabilities = capabilities }
+	lspconfig.lua_ls.setup { capabilities = capabilities }
+	-- Formatting options specified in .clang-format in repo root
+	-- copy it in desired projects
+	lspconfig.clangd.setup { capabilities = capabilities }
+	lspconfig.bashls.setup { capabilities = capabilities }
+	lspconfig.cmake.setup { capabilities = capabilities }
+	lspconfig.glslls.setup { capabilities = capabilities }
+	lspconfig.gopls.setup { capabilities = capabilities }
 
-capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+	lspconfig.html.setup { capabilities = capabilities, }
+	lspconfig.cssls.setup { capabilities = capabilities, }
+	lspconfig.glslls.setup { capabilities = capabilities }
+	lspconfig.sqls.setup { capabilities = capabilities }
+	lspconfig.hls.setup { capabilities = capabilities }
 
-lspconfig.html.setup {capabilities = capabilities,}
-lspconfig.cssls.setup {capabilities = capabilities,}
-lspconfig.glslls.setup {}
-lspconfig.sqls.setup {}
-lspconfig.hls.setup {}
+	--
+	-- On arch linux the executable had to be manually added to path
+	-- package was qt6-declarative
+	-- It was in /usr/lib/qt6/bin
+	lspconfig.qmlls.setup { filetypes = { "qml" } }
 
---
--- On arch linux the executable had to be manually added to path
--- package was qt6-declarative
--- It was in /usr/lib/qt6/bin
-lspconfig.qmlls.setup {filetypes = { "qml" } }
-
-lspconfig.zls.setup {}
-lspconfig.prolog_ls.setup{}
-
+	lspconfig.zls.setup { capabilities = capabilities }
+	lspconfig.prolog_ls.setup { capabilities = capabilities }
 end
 
-return { 
-   setup=function() setup_all() end 
+return {
+	setup = function() setup_all() end
 }

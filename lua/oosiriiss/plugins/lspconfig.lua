@@ -35,23 +35,5 @@ return {
 				vim.keymap.set({ "i", "n" }, "<A-l>", function() vim.lsp.buf.format() end, opts)
 			end,
 		})
-	    
-	       -- lsps are configured in completion
-	       
---			local capabilities = require('cmp_nvim_lsp').default_capabilities()
---
---			local lspconfig = require('lspconfig')
---			lspconfig.pyright.setup {
---				capabilities = capabilities
---			}
---			lspconfig.rust_analyzer.setup {
---				capabilities = capabilities
---			}
---
---			lspconfig.lua_ls.setup {
---				capabilities = capabilities
---			}
-
-		-- Remaps
 	end
 }
