@@ -7,19 +7,26 @@ return {
 		appearance = { nerd_font_variant = 'mono' },
 		signature = { enabled = true },
 		completion = {
-			documentation = { auto_show = true },
+			documentation = {
+				auto_show = true,
+			        auto_show_delay_ms = 0,
+				window = { border = "rounded", }
+			},
 			ghost_text = { enabled = true },
 			menu = {
+				border = "rounded",
 				draw = {
+					padding = { 1, 1 },
 					columns = {
-						{ "kind_icon", "kind", },
-						{ "label",     "label_description", gap = 1 },
+						{ "kind_icon" },
+						{ "label",    "label_description", gap = 1 },
+						{ "kind", }
 					},
 				},
 			},
 		},
 		sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
-		fuzzy = { implementation = "prefer_rust_with_warning" },
+		fuzzy = { implementation = "rust" },
 	},
 	opts_extend = { "sources.default" }
 }
