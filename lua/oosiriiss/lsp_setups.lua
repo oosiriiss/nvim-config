@@ -1,6 +1,6 @@
 function setup_all()
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
-      local lspconfig = require('lspconfig')
+	local capabilities = require("blink.cmp").get_lsp_capabilities()
+	local lspconfig = require('lspconfig')
 
 	lspconfig.pyright.setup {
 		capabilities = capabilities
@@ -21,7 +21,11 @@ function setup_all()
 	lspconfig.lua_ls.setup { capabilities = capabilities }
 	-- Formatting options specified in .clang-format in repo root
 	-- copy it in desired projects
-	lspconfig.clangd.setup { capabilities = capabilities }
+	lspconfig.clangd.setup {
+		capabilities = capabilities,
+		cmd = { "clangd", "--clang-tidy", "--enable-config" }
+
+	}
 	lspconfig.bashls.setup { capabilities = capabilities }
 	lspconfig.cmake.setup { capabilities = capabilities }
 	lspconfig.glslls.setup { capabilities = capabilities }
