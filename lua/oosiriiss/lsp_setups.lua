@@ -36,6 +36,7 @@ function setup_all()
 	lspconfig.glslls.setup { capabilities = capabilities }
 	lspconfig.sqls.setup { capabilities = capabilities }
 	lspconfig.hls.setup { capabilities = capabilities }
+	lspconfig.angularls.setup {capabilities = capabilities}
 
 	--
 	-- On arch linux the executable had to be manually added to path
