@@ -31,12 +31,24 @@ function setup_all()
 	lspconfig.glslls.setup { capabilities = capabilities }
 	lspconfig.gopls.setup { capabilities = capabilities }
 
-	lspconfig.html.setup { capabilities = capabilities, }
-	lspconfig.cssls.setup { capabilities = capabilities, }
 	lspconfig.glslls.setup { capabilities = capabilities }
 	lspconfig.sqls.setup { capabilities = capabilities }
 	lspconfig.hls.setup { capabilities = capabilities }
-	lspconfig.angularls.setup {capabilities = capabilities}
+
+	vim.lsp.enable('angularls')
+
+	lspconfig.html.setup { capabilities = capabilities, }
+
+	local csscap = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+        -- requires 'npm i -g vscode-langservers-extracted'
+	--
+	vim.lsp.enable('cssls');
+	vim.lsp.config('cssls', {
+		capabilities = csscap,
+	})
+
 
 	--
 	-- On arch linux the executable had to be manually added to path
