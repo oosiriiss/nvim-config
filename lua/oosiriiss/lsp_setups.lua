@@ -37,18 +37,27 @@ function setup_all()
 
 	vim.lsp.enable('angularls')
 
-	lspconfig.html.setup { capabilities = capabilities, }
+	-- requires 'npm i -g vscode-langservers-extracted'
+	--
+	local htmlcap = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = true;
+	vim.lsp.config('html', {
+		capabilities = htmlcap,
+	})
+	vim.lsp.enable('html')
 
 	local csscap = vim.lsp.protocol.make_client_capabilities()
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-        -- requires 'npm i -g vscode-langservers-extracted'
+	-- requires 'npm i -g vscode-langservers-extracted'
 	--
-	vim.lsp.enable('cssls');
 	vim.lsp.config('cssls', {
 		capabilities = csscap,
 	})
+	vim.lsp.enable('cssls');
 
+	-- requires 'npm i -g vscode-smarty-langserver-extracted'
+	vim.lsp.enable('smarty_ls')
 
 	--
 	-- On arch linux the executable had to be manually added to path
@@ -58,6 +67,8 @@ function setup_all()
 
 	lspconfig.zls.setup { capabilities = capabilities }
 	lspconfig.prolog_ls.setup { capabilities = capabilities }
+
+	vim.lsp.enable('csharp_ls')
 end
 
 return {
