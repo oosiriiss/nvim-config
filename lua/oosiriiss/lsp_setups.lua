@@ -1,74 +1,69 @@
 function setup_all()
-	local capabilities = require("blink.cmp").get_lsp_capabilities()
-	local lspconfig = require('lspconfig')
+	vim.api.nvim_create_autocmd('LspAttach', {
+		group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+		callback = function(ev)
+			-- Enable completion triggered by <c-x><c-o>
+			vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-	lspconfig.pyright.setup {
-		capabilities = capabilities
-	}
+			-- Buffer local mappings.
+			-- See `:help vim.lsp.*` for documentation on any of the below functions
+			local opts = { buffer = ev.buf }
+			vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+			vim.keymap.set('n', ']d', function() vim.lsp.diagnostic.goto_next() end, opts)
+			vim.keymap.set('n', '[d', function() vim.lsp.diagnostic.goto_prev() end, opts)
+			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+			vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+			vim.keymap.set("n", "<leader>wss", function() vim.lsp.buf.workspace_symbol() end, opts)
+			vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+			vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+			vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+			vim.keymap.set("n", "<leader>ref", function() vim.lsp.buf.references() end, opts)
+			vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+			vim.keymap.set({ "i", "n" }, "<A-l>", function() vim.lsp.buf.format() end, opts)
+		end,
+	})
 
-	-- formatting with black on save
-	vim.api.nvim_create_autocmd(
-		"BufWritePost",
+
+	local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
+
+
+	local lsps = {
+		{ name = "pyright" },
+		{ name = "rust_analyzer" },
+		{ name = "lua_ls" },
 		{
-			pattern = "*.py",
-			callback = function()
-				vim.cmd("silent !black --quiet %")
-			end,
-		}
-	)
+			name = "clangd",
+			overrides = {
+				cmd = { "clangd", "--clang-tidy", "--enable-config" }
+			}
+		},
+		{ name = "bashls" },
+		{ name = "cmake" },
+		{ name = "glslls" },
+		{ name = "sqls" },
+		{ name = "hls" },
+		{ name = "html" },
+		{ name = "cssls" },
+		{ name = "qmlls" },
+		{ name = "zls" },
+		{ name = "csharp_ls" }
+	};
 
-	lspconfig.rust_analyzer.setup { capabilities = capabilities }
-	lspconfig.lua_ls.setup { capabilities = capabilities }
-	-- Formatting options specified in .clang-format in repo root
-	-- copy it in desired projects
-	lspconfig.clangd.setup {
-		capabilities = capabilities,
-		cmd = { "clangd", "--clang-tidy", "--enable-config" }
 
-	}
-	lspconfig.bashls.setup { capabilities = capabilities }
-	lspconfig.cmake.setup { capabilities = capabilities }
-	lspconfig.glslls.setup { capabilities = capabilities }
-	lspconfig.gopls.setup { capabilities = capabilities }
+	for _, lsp in ipairs(lsps) do
+		local name = lsp["name"];
+		local overrides = lsp["overrides"];
 
-	lspconfig.glslls.setup { capabilities = capabilities }
-	lspconfig.sqls.setup { capabilities = capabilities }
-	lspconfig.hls.setup { capabilities = capabilities }
+		if not overrides then
+			overrides = { capabilities = blink_capabilities };
+		end
 
-	vim.lsp.enable('angularls')
-
-	-- requires 'npm i -g vscode-langservers-extracted'
-	--
-	local htmlcap = vim.lsp.protocol.make_client_capabilities()
-	capabilities.textDocument.completion.completionItem.snippetSupport = true;
-	vim.lsp.config('html', {
-		capabilities = htmlcap,
-	})
-	vim.lsp.enable('html')
-
-	local csscap = vim.lsp.protocol.make_client_capabilities()
-	capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-	-- requires 'npm i -g vscode-langservers-extracted'
-	--
-	vim.lsp.config('cssls', {
-		capabilities = csscap,
-	})
-	vim.lsp.enable('cssls');
-
-	-- requires 'npm i -g vscode-smarty-langserver-extracted'
-	vim.lsp.enable('smarty_ls')
-
-	--
-	-- On arch linux the executable had to be manually added to path
-	-- package was qt6-declarative
-	-- It was in /usr/lib/qt6/bin
-	lspconfig.qmlls.setup { filetypes = { "qml" } }
-
-	lspconfig.zls.setup { capabilities = capabilities }
-	lspconfig.prolog_ls.setup { capabilities = capabilities }
-
-	vim.lsp.enable('csharp_ls')
+		vim.lsp.config(name, overrides)
+		vim.lsp.enable(name);
+	end
 end
 
 return {
