@@ -3,13 +3,7 @@ return {
 	build = ":TSUpdate",
 	lazy = false, -- Lazy load not supported
 	config = function()
-
 		local ts = require("nvim-treesitter");
-		ts.setup({
-			install = {
-				compilers = { "gcc", "clang" }
-			}
-		});
 
 		local must_have_langs = {
 			"c",

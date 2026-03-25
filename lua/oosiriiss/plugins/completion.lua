@@ -1,7 +1,7 @@
 return {
 	'saghen/blink.cmp',
-	dependencies = { 'rafamadriz/friendly-snippets' },
 	version = '1.*',
+	lazy = true,
 	opts = {
 		keymap = { preset = 'default' },
 		appearance = { nerd_font_variant = 'mono' },
@@ -9,7 +9,7 @@ return {
 		completion = {
 			documentation = {
 				auto_show = true,
-			        auto_show_delay_ms = 0,
+				auto_show_delay_ms = 0,
 				window = { border = "rounded", }
 			},
 			ghost_text = { enabled = true },
@@ -25,8 +25,12 @@ return {
 				},
 			},
 		},
-		sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
+		sources = { default = { 'lsp', 'path', 'buffer', 'omni' }, },
 		fuzzy = { implementation = "rust" },
+		cmdline = {
+			keymap = { preset = 'inherit' },
+			completion = { menu = { auto_show = true } }
+		}
 	},
 	opts_extend = { "sources.default" }
 }

@@ -5,12 +5,13 @@ function setup_all()
 			-- Enable completion triggered by <c-x><c-o>
 			vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
+
 			-- Buffer local mappings.
 			-- See `:help vim.lsp.*` for documentation on any of the below functions
 			local opts = { buffer = ev.buf }
 			vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-			vim.keymap.set('n', ']d', function() vim.lsp.diagnostic.goto_next() end, opts)
-			vim.keymap.set('n', '[d', function() vim.lsp.diagnostic.goto_prev() end, opts)
+			vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = -1 }) end, opts)
+			vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = 1 }) end, opts)
 			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
@@ -26,9 +27,7 @@ function setup_all()
 		end,
 	})
 
-
 	local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
-
 
 	local lsps = {
 		{ name = "pyright" },
