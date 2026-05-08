@@ -1,0 +1,86 @@
+" --- EXTENSIONS ---
+set surround
+set commentary
+set argtextobj
+set highlightedyank
+set nerdtree
+set vimEverywhere
+
+" --- SETTINGS ---
+let mapleader = " "
+set scrolloff=5
+set number
+set relativenumber
+set incsearch
+set shiftwidth=3
+
+" Ensure system clipboard works
+set clipboard+=unnamedplus
+
+" --- GENERAL MAPPINGS ---
+" Escape equivalent
+nnoremap <C-c> <Esc>
+
+" Centered navigation
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Searching with centered viewport
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Project / File Explorer
+nmap <leader>pv :NERDTreeFind<CR>
+
+" Switching tabs
+nmap <A-Left> <Action>(PreviousTab)
+nmap <A-Right> <Action>(NextTab)
+
+" --- CLIPBOARD / YANKING ---
+vnoremap <leader>p "_dP
+nmap <leader>y "+y
+vmap <leader>y "+y
+nmap <leader>Y "+Y
+nmap <leader>d "_d
+vmap <leader>d "_d
+
+" Diagnostics / Errors
+nmap <leader>vd <Action>(ShowErrorDescription)
+nmap ]d <Action>(GotoNextError)
+nmap [d <Action>(GotoPreviousError)
+
+" Go to Actions
+nmap gD <Action>(GotoSuperMethod)
+nmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap <leader>D <Action>(GotoTypeDeclaration)
+
+" Tooltips and Information
+nmap K <Action>(ShowHoverInfo)
+imap <C-h> <Action>(ParameterInfo)
+nmap <C-h> <Action>(ParameterInfo)
+
+" Workspace / Symbols
+nmap <leader>wss <Action>(GotoSymbol)
+nmap <leader>ref <Action>(FindUsages)
+
+" Refactoring & Actions
+nmap <leader>rn <Action>(RenameElement)
+nmap <leader>ca <Action>(ShowIntentionActions)
+vmap <leader>ca <Action>(ShowIntentionActions)
+
+" Formatting
+nmap <A-l> <Action>(ReformatCode)
+imap <A-l> <Action>(ReformatCode)
+
+" Telescope Equivalents
+nmap <leader>pf <Action>(GotoFile)
+nmap <leader>ps <Action>(FindInPath)
+
+" File Utilities
+nmap <A-n> <Action>(NewElement)
+nmap <A-d> <Action>(NewDir)
+
+" Custom Commands
+command! ZenMode action ToggleZenMode
+ 
