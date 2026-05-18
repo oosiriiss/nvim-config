@@ -2,10 +2,14 @@
 "
 " NOTES
 " As navigating native popups like the completion popup, intent popup with ideavim doesn't work,
-" we need to MANUALLY bind the <C-n> to "List Actions/SelectNextRow" and <C-p> to "List Actions/SelectPreviousRow" to make it work.
+" we need to MANUALLY bind the
+" 1. <C-n> to "List Actions/SelectNextRow"
+" 2. <C-p> to "List Actions/SelectPreviousRow"
+" 3. Alias <C-y> to "Enter" to trigger selection of items
+" I couldn't find any better way for this stuff
 "
 "
-"
+
 
 " --- EXTENSIONS ---
 set surround
@@ -91,3 +95,5 @@ nmap <A-d> <Action>(NewDir)
 
 " Custom Commands
 command! ZenMode action ToggleZenMode
+
+
